@@ -31,9 +31,9 @@ module.exports=function(){
 	});
 
 	router.get('/login', function(req, res, next) {
-		/*if(req.isAuthenticated())
+		if(req.isAuthenticated())
 			res.redirect('/');
-		else*/
+		else
 			res.render('manager', {title: 'Login'});
 	});
 

@@ -1,6 +1,6 @@
 function Config() {
   this.port = '4000';
-  this.dbUrl = '';
+  this.dbUrl = 'mongodb://carterapp:cartermlab@ds135747.mlab.com:35747/carter';
   this.auth = {
   	'facebookAuth' : {
         'clientID': '', // App ID
@@ -26,8 +26,8 @@ function Config() {
     host: 'smtp.sendgrid.net',
     port: 587,
     auth: {
-        user: '', // generated ethereal user
-        pass: ''  // generated ethereal password
+        user: 'apikey', // generated ethereal user
+        pass: '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'  // generated ethereal password
     }
   }
 }

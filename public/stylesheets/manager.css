@@ -170,6 +170,41 @@
 	margin-bottom: 5px;
 }
 
+@media only screen  
+  and (max-device-width: 812px) 
+  and (orientation: portrait) { 
+
+	.modal-container {
+		width: 80%;
+		max-width: 100%;
+	}
+
+	.modal-container .confirm-container{
+		display: grid;
+		grid-template-columns: 2fr 4fr;
+		grid-template-rows: 1fr 1fr 2fr;
+	}
+
+	.modal-container .confirm-container .confirm-btn{
+		grid-row: 3/4;
+		grid-column: 1/3;
+	}
+
+	.modal-container .confirm-container .subtotal-label{
+		grid-row: 1/2;
+		grid-column: 1/2;
+		
+	}
+	.modal-container .confirm-container .currency-label{
+		grid-row: 2/3;
+		grid-column: 1/2;
+	}
+	.modal-container .confirm-container .subtotal-value{
+		grid-row: 1/3;
+		grid-column: 2/3;
+	}
+  }
+
 #sidebar {
 	width: 5%;
 	z-index: 2000;

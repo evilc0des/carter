@@ -1,0 +1,284 @@
+.main-container {
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+.ui-container {
+	z-index: 2000;
+	width: 100%;
+	position: absolute;
+}
+
+.modal-container {
+	position: fixed;
+	left: 50%;
+	top:10%;
+	width: 30%;
+	max-width: 400px;
+	border-radius: 5px;
+	box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.6);
+	text-align: center;
+	background-color: white;
+	color: black;
+
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
+	-ms-transform: translate(-50%, 0);
+	-o-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+
+}
+
+.modal-container .product-name{
+	font-family: Lato, sans-serif;
+	font-size: 1.4em;
+	font-weight: 300;
+}
+
+.modal-container .product-price{
+	font-family: Lato, sans-serif;
+	font-size: 1em;
+	font-weight: 300;
+	background-color: black;
+	color: white;
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 25px;
+}
+
+.modal-container .product-quantity{
+	font-family: Lato, sans-serif;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.modal-container .product-quantity .product-quantity-label{
+	display: inline-block;
+	font-size: 0.8em;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.modal-container .product-quantity .product-quantity-field{
+	width: 10%;
+	margin: 0px 10px;
+	text-align: center;
+}
+
+.modal-container .product-quantity .product-quantity-tuner{
+	display: inline-block;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.modal-container .product-stock{
+	margin-top: 2px;
+	font-family: Lato, sans-serif;
+	font-size: 0.8em;
+	font-weight: 300;
+}
+
+.modal-container .product-variants{
+	list-style: none;
+	padding-left: 0;
+	margin-top: 24px;
+}
+
+.modal-container .product-variants .product-variants-label{
+	font-size: 1em;
+	margin-bottom: 8px;
+}
+
+.modal-container .product-variants li{
+	display: inline-block;
+	margin: 2px 5px;
+	padding: 5px 10px;
+	border: 1px solid #0a3272;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.modal-container .product-variants .selected-variant{
+	background-color: #0a3272;
+	color: white;
+}
+
+.modal-container .cancel-btn{
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background: transparent;
+	font-size: 1.5em;
+	font-family: Lato, sans-serif;
+	font-weight: 300;
+	border: none;
+	cursor: pointer;
+}
+
+.modal-container .confirm-container{
+	display: grid;
+	grid-template-columns: 1fr 3fr 5fr;
+	grid-template-rows: 1fr 1fr 1fr;
+}
+.modal-container .confirm-container .confirm-btn{
+	grid-row: 1/4;
+	grid-column: 3/4;
+	margin: 10px;
+	background-color: #0a3272;
+	color: white;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.modal-container .confirm-container .confirm-btn:hover{
+	background-color: #1b4d9e;
+}
+.modal-container .confirm-container .subtotal-label{
+	grid-row: 2/3;
+	grid-column: 1/2;
+	font-family: Lato, sans-serif;
+	font-size: 0.8em;
+	font-weight: 300;
+	justify-self: end;
+	align-self:	end;
+	margin-left: 10px;
+	
+}
+.modal-container .confirm-container .currency-label{
+	grid-row: 3/4;
+	grid-column: 1/2;
+	font-family: Lato, sans-serif;
+	font-size: 1em;
+	font-weight: 700;
+	justify-self: end;
+	align-self:	start;
+	margin-bottom: 12px;
+	margin-left: 10px;
+}
+.modal-container .confirm-container .subtotal-value{
+	grid-row: 1/4;
+	grid-column: 2/3;
+	font-family: Lato, sans-serif;
+	font-size: 2.5em;
+	font-weight: 700;
+	justify-self: start;
+	align-self:	end;
+	margin-bottom: 5px;
+}
+
+#sidebar {
+	width: 5%;
+	z-index: 2000;
+	background-color: #0060ff;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#sidebar-open{
+	position: absolute;
+	z-index: 1000;
+	width: 20%;
+	background-color: #0f387a;
+	left: -15%;
+	transition: all 400ms ease;
+}
+
+#sidebar-open.active{
+	left: 5%;
+}
+
+.content-window{
+	width: 95%;
+	z-index: 800;
+	position: absolute;
+	left: 5%;
+}
+
+
+
+.nav1 {
+	padding-top: 10px;
+}
+.nav1 img {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+
+.nav-item:hover {
+	background-color: #0a3272;
+	color: white;
+}
+.nav1 img.main-logo {
+	padding-bottom: 30px;
+	width: 40%;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+.nav1 img.nav-item {
+	width: 40%;
+	padding-left: 30%;
+	padding-right: 30%;
+}
+.nav2 {
+	padding-bottom: 10px;
+}
+
+.nav2 img {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	cursor: pointer;
+}
+
+.nav2 img.nav-item {
+	width: 50%;
+	padding-left: 25%;
+	padding-right: 25%;
+}
+
+.navbar {
+	width: 20%;
+	background-color: #a8c8ff;
+}
+
+
+.store-avatar {
+	border: 2px solid white;
+	box-shadow: 0px 0px 3px 2px gainsboro;
+}
+
+#create-store-form {
+	display: none;
+}
+
+#create-store-form.active {
+	display: block;
+}
+
+#create-store-form-open.hidden {
+	display: none;
+}
+
+#create-store-form-open {
+	display: block;
+}
+.content {
+	width: 75%;
+}
+
+
+/*Utilities*/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

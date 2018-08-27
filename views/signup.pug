@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	.row
+		.col-xs-12.col-md-8.col-lg-8.bg-primary.page-high
+		.col-xs-12.col-md-4.col-lg-4.page-high.row.center-xs.center-lg.middle-lg.signup-div
+			.col-lg-12
+				h1.txt-secondary Carter
+				form(onsubmit="event.preventDefault();register();")
+					input#email-field.form-field(type='email', placeholder='EMAIL ADDRESS', required)
+					br
+					input#password-field.form-field(type='password', placeholder='PASSWORD', minlength='6' required)
+					br
+					button.submit-btn(type="submit") SIGN UP
+				br
+				p Already Registered? #[b #[a(href='#') Login]]
+	script(src='https://unpkg.com/axios/dist/axios.min.js')
+	script(src='/javascripts/bundle.min.js')

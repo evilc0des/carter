@@ -49,9 +49,12 @@ module.exports = function(passport) {
 					newUser.save((err) => {
 						if(err)
 							throw err;
-						// setup email data with unicode symbols
+						
 						console.log(configHost);
-						fs.readFile(path.resolve(__dirname,'../templates/confirmMail.hbs'), (err, template) => {
+						return done(null, newUser); // Comment to send email to registered user
+
+						// Uncomment to send email to registered user
+						/*fs.readFile(path.resolve(__dirname,'../templates/confirmMail.hbs'), (err, template) => {
 							let htmltemplate = hbs.compile(template.toString());
 							const mailOptions = {
 								from: '"Carter Support" <support@carter.com>', // sender address
@@ -67,7 +70,7 @@ module.exports = function(passport) {
 								console.log('done');
 								return done(null, newUser);
 							});	
-						});
+						});*/
 					});
 				}
 			});

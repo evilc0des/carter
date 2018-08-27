@@ -1054,7 +1054,7 @@ var Orders = function (_Component) {
                             ),
                             _react2.default.createElement(
                                 'p',
-                                null,
+                                { className: 'order-date' },
                                 'Purchased ',
                                 _this3.getTimeString(order.createdDate)
                             ),

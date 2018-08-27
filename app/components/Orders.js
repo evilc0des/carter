@@ -70,7 +70,7 @@ export default class Orders extends Component{
                                         <p className="order-qty">{order.products.length} ITEMS</p>
                                         <p className="order-total">Rs. {order.total}</p>
                                     </div>
-                                    <p>Purchased {this.getTimeString(order.createdDate)}</p>
+                                    <p className="order-date">Purchased {this.getTimeString(order.createdDate)}</p>
                                     <button className="order-cancel-btn" onClick={e => this.handleOrderDelete(order._id)}>CANCEL ORDER</button>
                                 </div>
                             </li>)

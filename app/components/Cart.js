@@ -49,7 +49,7 @@ export default class Cart extends Component{
         let products = this.props.products.map(product => {
             if(this[product._id + product.variant].value != product.qty){
                 updated = true;
-                return {...product, qty: this[product._id + product.variant].value}
+                return {...product, qty: parseInt(this[product._id + product.variant].value)}
             }
             else return product;
         });

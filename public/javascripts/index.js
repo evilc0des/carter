@@ -506,7 +506,7 @@ var Cart = function (_Component) {
             var products = this.props.products.map(function (product) {
                 if (_this3[product._id + product.variant].value != product.qty) {
                     updated = true;
-                    return _extends({}, product, { qty: _this3[product._id + product.variant].value });
+                    return _extends({}, product, { qty: parseInt(_this3[product._id + product.variant].value) });
                 } else return product;
             });
 

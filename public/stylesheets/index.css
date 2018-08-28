@@ -367,6 +367,60 @@ body {
 	background: #2758a7;	
 }
 
+.order-card .order-details-btn {
+	margin-right: 16px;
+	border: 1px solid #2758a7;
+	color: white;
+	background: #2758a7;
+	padding: 10px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.order-card .order-details-btn:hover {
+	color: white;
+	background: #316bca;	
+}
+
+.order-details-card {
+	background: rgb(235, 235, 235);
+	padding: 8px; 
+}
+.order-details-card>h3{
+	font-size: 1.2em;
+	margin:0px 8px 5px; 
+}
+.order-details-card .order-detail-product-card{
+	display: flex;
+	margin: 0px 10% 0px;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1px;
+	border-bottom: 1px solid darkgray;
+}
+
+.order-details-card .order-info {
+	padding-left: 16px;
+}
+
+.order-details-card .order-info .product-name {
+	font-weight: 700;
+	margin: 16px 0px 5px;
+}
+.order-details-card .order-info .product-price {
+	font-size: 0.8em;
+	margin: 5px 0px 5px;
+}
+.order-details-card .order-info .product-variant {
+	font-size: 0.8em;
+	margin: 5px 0px 16px;
+}
+
+.order-details-card .product-subtotal .product-subtotal-value {
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
 
 /*Media Queries Start */
 
@@ -457,6 +511,20 @@ body {
 	.order-card .order-cancel-btn {
 		align-self: center;
 		margin-bottom: 16px;
+	}
+
+	.order-card .order-details-btn {
+		align-self: center;
+		margin-bottom: 8px;
+	}
+
+	.order-details-card .order-detail-product-card .order-info{
+		padding-left: 2px;
+	}
+
+	.order-details-card .order-detail-product-card{
+		margin: 0px 8px 0px;
+		
 	}
 }
 

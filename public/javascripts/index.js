@@ -923,6 +923,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -932,6 +934,8 @@ var _react2 = _interopRequireDefault(_react);
 var _manager = require('../actions/manager');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -947,15 +951,41 @@ var Orders = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Orders.__proto__ || Object.getPrototypeOf(Orders)).call(this, props));
 
+        _this.state = {};
+
         _this.handleOrderDelete = _this.handleOrderDelete.bind(_this);
-        _this.handleProductAddFormSubmit = _this.handleProductAddFormSubmit.bind(_this);
+        _this.handleOrderDetails = _this.handleOrderDetails.bind(_this);
         return _this;
     }
 
     _createClass(Orders, [{
+        key: 'handleOrderDetails',
+        value: function handleOrderDetails(order, products) {
+            var _this2 = this;
+
+            if (!this.state[order]) {
+
+                this.setState(_defineProperty({}, order, {
+                    show: true,
+                    products: products.map(function (p) {
+                        return _extends({}, _this2.props.products.find(function (e) {
+                            return e._id === p.product;
+                        }), {
+                            qty: p.quantity,
+                            variant: p.variant
+                        });
+                    })
+                }));
+            } else {
+                this.setState(_defineProperty({}, order, _extends({}, this.state[order], {
+                    show: !this.state[order].show
+                })));
+            }
+        }
+    }, {
         key: 'handleOrderDelete',
         value: function handleOrderDelete(order) {
-            var _this2 = this;
+            var _this3 = this;
 
             swal({
                 title: "Are you Sure?",
@@ -965,7 +995,7 @@ var Orders = function (_Component) {
                 dangerMode: true
             }).then(function (done) {
                 if (done) {
-                    _this2.props.deleteOrder(order);
+                    _this3.props.deleteOrder(order);
                 }
             });
         }
@@ -1004,7 +1034,7 @@ var Orders = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
 
             var orders = this.props.orders;
 
@@ -1029,42 +1059,117 @@ var Orders = function (_Component) {
                         { key: order._id },
                         _react2.default.createElement(
                             'div',
-                            { className: 'product-card order-card' },
+                            { className: 'product-card' },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'order-info' },
+                                { className: 'order-card' },
                                 _react2.default.createElement(
-                                    'p',
-                                    { className: 'order-number' },
-                                    'Order #',
-                                    order._id
+                                    'div',
+                                    { className: 'order-info' },
+                                    _react2.default.createElement(
+                                        'p',
+                                        { className: 'order-number' },
+                                        'Order #',
+                                        order._id
+                                    ),
+                                    _react2.default.createElement(
+                                        'p',
+                                        { className: 'order-qty' },
+                                        order.products.reduce(function (a, p) {
+                                            return a + parseInt(p.quantity);
+                                        }, 0),
+                                        ' ITEMS'
+                                    ),
+                                    _react2.default.createElement(
+                                        'p',
+                                        { className: 'order-total' },
+                                        'Rs. ',
+                                        order.total
+                                    )
                                 ),
                                 _react2.default.createElement(
                                     'p',
-                                    { className: 'order-qty' },
-                                    order.products.length,
-                                    ' ITEMS'
+                                    { className: 'order-date' },
+                                    'Purchased ',
+                                    _this4.getTimeString(order.createdDate)
                                 ),
                                 _react2.default.createElement(
-                                    'p',
-                                    { className: 'order-total' },
-                                    'Rs. ',
-                                    order.total
+                                    'button',
+                                    { className: 'order-details-btn', onClick: function onClick(e) {
+                                            return _this4.handleOrderDetails(order._id, order.products);
+                                        } },
+                                    'ORDER DETAILS'
+                                ),
+                                _react2.default.createElement(
+                                    'button',
+                                    { className: 'order-cancel-btn', onClick: function onClick(e) {
+                                            return _this4.handleOrderDelete(order._id);
+                                        } },
+                                    'CANCEL ORDER'
                                 )
                             ),
-                            _react2.default.createElement(
-                                'p',
-                                { className: 'order-date' },
-                                'Purchased ',
-                                _this3.getTimeString(order.createdDate)
-                            ),
-                            _react2.default.createElement(
-                                'button',
-                                { className: 'order-cancel-btn', onClick: function onClick(e) {
-                                        return _this3.handleOrderDelete(order._id);
-                                    } },
-                                'CANCEL ORDER'
-                            )
+                            _this4.state[order._id] && _this4.state[order._id].show ? _react2.default.createElement(
+                                'div',
+                                { className: 'order-details-card' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    null,
+                                    'Order Details'
+                                ),
+                                _this4.state[order._id].products.map(function (product) {
+                                    return _react2.default.createElement(
+                                        'li',
+                                        { className: 'order-detail-product-card', key: product._id },
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'order-info' },
+                                            _react2.default.createElement(
+                                                'p',
+                                                { className: 'product-name' },
+                                                product.name
+                                            ),
+                                            _react2.default.createElement(
+                                                'p',
+                                                { className: 'product-price' },
+                                                'Rs. ',
+                                                product.price
+                                            ),
+                                            product.variant ? _react2.default.createElement(
+                                                'p',
+                                                { className: 'product-variant' },
+                                                _react2.default.createElement(
+                                                    'b',
+                                                    null,
+                                                    'VARIANT:'
+                                                ),
+                                                ' ',
+                                                product.variant
+                                            ) : null
+                                        ),
+                                        _react2.default.createElement(
+                                            'p',
+                                            { className: 'product-qty' },
+                                            'QUANTITY: ',
+                                            product.qty
+                                        ),
+                                        _react2.default.createElement(
+                                            'p',
+                                            { className: 'product-subtotal' },
+                                            _react2.default.createElement(
+                                                'b',
+                                                null,
+                                                'Rs.'
+                                            ),
+                                            ' ',
+                                            _react2.default.createElement(
+                                                'span',
+                                                { className: 'product-subtotal-value' },
+                                                product.qty * product.price
+                                            )
+                                        )
+                                    );
+                                })
+                            ) : null
                         )
                     );
                 })
@@ -1940,7 +2045,7 @@ var ManagerContainer = function (_Component) {
                     _react2.default.createElement(_reactRouterDom.Route, {
                         path: '/orders',
                         render: function render(props) {
-                            return _react2.default.createElement(_Orders2.default, { orders: orderItems, fetchOrders: fetchOrders, deleteOrder: deleteOrder });
+                            return _react2.default.createElement(_Orders2.default, { products: products, orders: orderItems, fetchOrders: fetchOrders, deleteOrder: deleteOrder });
                         }
                     })
                 )

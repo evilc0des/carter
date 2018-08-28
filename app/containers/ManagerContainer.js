@@ -66,7 +66,7 @@ class ManagerContainer extends Component {
                     />
                     <Route
                         path='/orders'
-                        render={(props) => <Orders orders={orderItems} fetchOrders={fetchOrders} deleteOrder={deleteOrder}/>}
+                        render={(props) => <Orders products={products} orders={orderItems} fetchOrders={fetchOrders} deleteOrder={deleteOrder}/>}
                     />
                 </div>
                     

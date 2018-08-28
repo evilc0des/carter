@@ -24,7 +24,7 @@ module.exports=function(){
 					let total = 0, quantity = 0;
 
 					let productArr = cart.products.map(product => {
-						total += product.product.price;
+						total += product.product.price * product.quantity;
 						quantity += product.quantity;
 						return {
 							product: product.product._id,

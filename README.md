@@ -5,7 +5,7 @@ Order Management System
 To setup the codebase and start the local server
 
 - `git clone https://github.com/evilc0des/carter.git`
-- `npm init`
+- `npm install`
 - `node app.js`
 
 The app will start in http://localhost:4000
